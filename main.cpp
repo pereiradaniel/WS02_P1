@@ -21,6 +21,9 @@ int main() {
 
     // TODO 1: declare a pointer for a dynamic array of Gifts (remember to initialize it)
 
+    Gift* gift = nullptr;
+
+
     // END TODO 1
 
     cout << "Enter number of Gifts to allocate: ";
@@ -31,6 +34,8 @@ int main() {
 
     // TODO 2: allocate dynamic memory for the gifts pointer using the numberOfGifts
 
+    gift = new Gift[numberOfGifts];
+
     // END TODO 2
 
     for (int i = 0; i < numberOfGifts; ++i)
@@ -39,17 +44,23 @@ int main() {
         
         // TODO 3: utilizing the gifting functions, allow input for the gift's description
 
+        gifting(gift[i].g_description);
+
         // END TODO 3
         
         cin.ignore(2000, '\n'); // clear input buffer
         
         // TODO 4: utilizing the gifting functions, allow the user to input the gift's price
 
+        gifting(gift[i].g_price);
+
         // END TODO 4
         
         cin.ignore(2000, '\n'); // clear input buffer
         
         // TODO 5: utilizing the gifting functions, allow the user to input the units of gift
+
+        gifting(gift[i].g_units);
 
         // END TODO 5
         cin.ignore(2000, '\n');
@@ -60,11 +71,16 @@ int main() {
 
     // TODO 6: display the details of each gift using the Gifts module display function
 
+    display(*gift, numberOfGifts);
+
     // END TODO 6
 
 
 
     // TODO 7: deallocate the gifts pointer here to avoid memory as we are done with it
+
+    delete[] gift;
+    gift = nullptr;
 
     // END TODO 7
 
